@@ -1,5 +1,5 @@
 {
-  "name": "gedcomx-ts",
+  "name": "@freedoms-loom/gedcomx-ts",
   "version": "1.0.0",
   "description": "GEDCOM X represented in Typescript with compilation to JSON Schema. ",
   "scripts": {
