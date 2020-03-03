@@ -1,5 +1,5 @@
 import {NamePartType} from "../enums/NamePartType";
-import {NamePartQualifier} from "./Qualifier";
+import {Qualifier} from "./Qualifier";
 
 /**
  * @$id "http://gedcomx.org/v1/NamePart"
@@ -7,5 +7,5 @@ import {NamePartQualifier} from "./Qualifier";
 export interface NamePart {
     type?: NamePartType
     value: string
-    qualifier?: NamePartQualifier
+    qualifier?: Qualifier
 }

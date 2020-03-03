@@ -1,15 +1,9 @@
-/**
- * @$id "http://gedcomx.org/v1/Qualifier"
- */
 export enum SourceReferenceQualifier {
     CharacterRegion = "http://gedcomx.org/CharacterRegion",
     RectangleRegion = "http://gedcomx.org/RectangleRegion",
     TimeRegion = "http://gedcomx.org/TimeRegion"
 }
 
-/**
- * @$id "http://gedcomx.org/v1/Qualifier"
- */
 export enum NamePartQualifier {
     TITLE = "http://gedcomx.org/Title",
     PRIMARY = "http://gedcomx.org/Primary",
@@ -27,3 +21,10 @@ export enum NamePartQualifier {
     POSTNOM = "http://gedcomx.org/Postnom",
     PARTICLE = "http://gedcomx.org/Particle"
 }
+
+/**
+ * @$id "http://gedcomx.org/v1/Qualifier"
+ */
+export type Qualifier = SourceReferenceQualifier | NamePartQualifier | {
+    value?: string
+};

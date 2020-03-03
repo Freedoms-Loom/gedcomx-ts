@@ -1,13 +1,12 @@
 {
   "name": "gedcomx-ts",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "GEDCOM X represented in Typescript with compilation to JSON Schema. ",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf dist/ && mkdir dist/ && ./node_modules/.bin/ts-json-schema-generator --path 'types/**/*.ts'  -o ./dist/gedcomx_schema.json --jsDoc extended --validationKeywords \"\\$id\"             "
   },
-  "author": "",
-  "license": "MIT",
+  "author": "Cornell Institute for Social and Economic Research <ciser@cornell.edu>",
+  "license": "Apache License 2.0",
   "dependencies": {
     "ts-json-schema-generator": "^0.61.1"
   }

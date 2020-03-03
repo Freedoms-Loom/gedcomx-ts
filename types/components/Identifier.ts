@@ -1,5 +1,5 @@
+import {URI} from "../aliases/URI";
 import {IdentifierType} from "../enums/IdentifierType";
-import {URI} from "../helpers/URI";
 
 /**
  * @$id "http://gedcomx.org/v1/Identifier"

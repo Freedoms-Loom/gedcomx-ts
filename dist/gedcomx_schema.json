@@ -1,0 +1,1536 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Address": {
+      "$id": "http://gedcomx.org/v1/Address",
+      "additionalProperties": false,
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "stateOrProvince": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "street2": {
+          "type": "string"
+        },
+        "street3": {
+          "type": "string"
+        },
+        "street4": {
+          "type": "string"
+        },
+        "street5": {
+          "type": "string"
+        },
+        "street6": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Agent": {
+      "$id": "http://gedcomx.org/v1/Agent",
+      "additionalProperties": false,
+      "properties": {
+        "accounts": {
+          "items": {
+            "$ref": "#/definitions/OnlineAccount"
+          },
+          "type": "array"
+        },
+        "addresses": {
+          "items": {
+            "$ref": "#/definitions/Address"
+          },
+          "type": "array"
+        },
+        "emails": {
+          "items": {
+            "$ref": "#/definitions/URI"
+          },
+          "type": "array"
+        },
+        "homepage": {
+          "$ref": "#/definitions/URI"
+        },
+        "id": {
+          "type": "string"
+        },
+        "identifiers": {
+          "items": {
+            "$ref": "#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "names": {
+          "items": {
+            "$ref": "#/definitions/TextValue"
+          },
+          "type": "array"
+        },
+        "openid": {
+          "$ref": "#/definitions/URI"
+        },
+        "person": {
+          "$ref": "#/definitions/URI"
+        },
+        "phones": {
+          "items": {
+            "$ref": "#/definitions/URI"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "Attribution": {
+      "$id": "http://gedcomx.org/v1/Attribution",
+      "additionalProperties": false,
+      "properties": {
+        "changeMessage": {
+          "type": "string"
+        },
+        "contributor": {
+          "$ref": "#/definitions/URI"
+        },
+        "created": {
+          "$ref": "#/definitions/Timestamp"
+        },
+        "creator": {
+          "$ref": "#/definitions/URI"
+        },
+        "modified": {
+          "$ref": "#/definitions/Timestamp"
+        }
+      },
+      "type": "object"
+    },
+    "Conclusion": {
+      "$id": "http://gedcomx.org/v1/Conclusion",
+      "additionalProperties": false,
+      "properties": {
+        "analysis": {
+          "$ref": "#/definitions/URI"
+        },
+        "attribution": {
+          "$ref": "#/definitions/Attribution"
+        },
+        "confidence": {
+          "$ref": "#/definitions/Confidence"
+        },
+        "id": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/Note"
+          },
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "Confidence": {
+      "enum": [
+        "http://gedcomx.org/Low",
+        "http://gedcomx.org/Medium",
+        "http://gedcomx.org/High"
+      ],
+      "type": "string"
+    },
+    "Coverage": {
+      "$id": "http://gedcomx.org/v1/Coverage",
+      "additionalProperties": false,
+      "properties": {
+        "spatial": {
+          "$ref": "#/definitions/PlaceReference"
+        },
+        "temporal": {
+          "$ref": "#/definitions/Date"
+        }
+      },
+      "type": "object"
+    },
+    "Date": {
+      "$id": "http://gedcomx.org/v1/Date",
+      "additionalProperties": false,
+      "properties": {
+        "formal": {
+          "$ref": "#/definitions/GEDCOMXDate"
+        },
+        "original": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Document": {
+      "$id": "http://gedcomx.org/v1/Document",
+      "additionalProperties": false,
+      "properties": {
+        "analysis": {
+          "$ref": "#/definitions/URI"
+        },
+        "attribution": {
+          "$ref": "#/definitions/Attribution"
+        },
+        "confidence": {
+          "$ref": "#/definitions/Confidence"
+        },
+        "extracted": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/Note"
+          },
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        },
+        "text": {
+          "type": "string"
+        },
+        "textType": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/DocumentType"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "type": "object"
+    },
+    "DocumentType": {
+      "enum": [
+        "http://gedcomx.org/Abstract",
+        "http://gedcomx.org/Transcription",
+        "http://gedcomx.org/Translation",
+        "http://gedcomx.org/Analysis"
+      ],
+      "type": "string"
+    },
+    "Event": {
+      "$id": "http://gedcomx.org/v1/Event",
+      "additionalProperties": false,
+      "properties": {
+        "analysis": {
+          "$ref": "#/definitions/URI"
+        },
+        "attribution": {
+          "$ref": "#/definitions/Attribution"
+        },
+        "confidence": {
+          "$ref": "#/definitions/Confidence"
+        },
+        "date": {
+          "$ref": "#/definitions/Date"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/definitions/EvidenceReference"
+          },
+          "type": "array"
+        },
+        "extracted": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "string"
+        },
+        "identifiers": {
+          "items": {
+            "$ref": "#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "media": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/Note"
+          },
+          "type": "array"
+        },
+        "place": {
+          "$ref": "#/definitions/PlaceReference"
+        },
+        "roles": {
+          "items": {
+            "$ref": "#/definitions/EventRole"
+          },
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        },
+        "type": {
+          "$ref": "#/definitions/EventType"
+        }
+      },
+      "type": "object"
+    },
+    "EventRole": {
+      "$id": "http://gedcomx.org/v1/EventRole",
+      "additionalProperties": false,
+      "properties": {
+        "details": {
+          "type": "string"
+        },
+        "person": {
+          "$ref": "#/definitions/URI"
+        },
+        "type": {
+          "$ref": "#/definitions/RoleType"
+        }
+      },
+      "required": [
+        "person"
+      ],
+      "type": "object"
+    },
+    "EventType": {
+      "enum": [
+        "http://gedcomx.org/Adoption",
+        "http://gedcomx.org/Birth",
+        "http://gedcomx.org/Burial",
+        "http://gedcomx.org/Census",
+        "http://gedcomx.org/Christening",
+        "http://gedcomx.org/Death",
+        "http://gedcomx.org/Divorce",
+        "http://gedcomx.org/Marriage"
+      ],
+      "type": "string"
+    },
+    "EvidenceReference": {
+      "$id": "http://gedcomx.org/v1/EvidenceReference",
+      "additionalProperties": false,
+      "properties": {
+        "attribution": {
+          "$ref": "#/definitions/Attribution"
+        },
+        "resource": {
+          "$ref": "#/definitions/URI"
+        }
+      },
+      "required": [
+        "resource"
+      ],
+      "type": "object"
+    },
+    "Fact": {
+      "$id": "http://gedcomx.org/v1/Fact",
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "$ref": "#/definitions/Date"
+        },
+        "place": {
+          "$ref": "#/definitions/PlaceReference"
+        },
+        "qualifiers": {
+          "items": {
+            "$ref": "#/definitions/FactQualifier"
+          },
+          "type": "array"
+        },
+        "type": {
+          "$ref": "#/definitions/FactType"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "type": "object"
+    },
+    "FactQualifier": {
+      "enum": [
+        "http://gedcomx.org/Age",
+        "http://gedcomx.org/Cause",
+        "http://gedcomx.org/Religion",
+        "http://gedcomx.org/Transport",
+        "http://gedcomx.org/NonConsensual"
+      ],
+      "type": "string"
+    },
+    "FactType": {
+      "enum": [
+        "http://gedcomx.org/Adoption",
+        "http://gedcomx.org/Birth",
+        "http://gedcomx.org/Burial",
+        "http://gedcomx.org/Christening",
+        "http://gedcomx.org/Death",
+        "http://gedcomx.org/Residence",
+        "http://gedcomx.org/Divorce",
+        "http://gedcomx.org/Marriage"
+      ],
+      "type": "string"
+    },
+    "GEDCOMXDate": {
+      "anyOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "day": {
+              "type": "number"
+            },
+            "hour": {
+              "type": "number"
+            },
+            "minute": {
+              "type": "number"
+            },
+            "month": {
+              "type": "number"
+            },
+            "second": {
+              "type": "number"
+            },
+            "year": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "year",
+            "month",
+            "day",
+            "hour",
+            "minute",
+            "second"
+          ],
+          "type": "object"
+        },
+        {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "additionalProperties": false,
+                  "properties": {
+                    "endDate": {
+                      "additionalProperties": false,
+                      "type": "object"
+                    },
+                    "startDate": {
+                      "additionalProperties": false,
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "startDate",
+                    "endDate"
+                  ],
+                  "type": "object"
+                },
+                {
+                  "additionalProperties": false,
+                  "properties": {
+                    "duration": {
+                      "type": "string"
+                    },
+                    "startDate": {
+                      "additionalProperties": false,
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "startDate",
+                    "duration"
+                  ],
+                  "type": "object"
+                }
+              ]
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "endDate": {
+                  "additionalProperties": false,
+                  "type": "object"
+                },
+                "startDate": {
+                  "additionalProperties": false,
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            }
+          ]
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "duration": {
+              "type": "string"
+            },
+            "recurrences": {
+              "type": "number"
+            },
+            "startDate": {
+              "additionalProperties": false,
+              "type": "object"
+            }
+          },
+          "required": [
+            "duration",
+            "startDate"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "approximate": {
+              "enum": [
+                true
+              ],
+              "type": "boolean"
+            },
+            "day": {
+              "type": "number"
+            },
+            "hour": {
+              "type": "number"
+            },
+            "minute": {
+              "type": "number"
+            },
+            "month": {
+              "type": "number"
+            },
+            "second": {
+              "type": "number"
+            },
+            "year": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "approximate",
+            "day",
+            "hour",
+            "minute",
+            "month",
+            "second",
+            "year"
+          ],
+          "type": "object"
+        },
+        {
+          "anyOf": [
+            {
+              "additionalProperties": false,
+              "properties": {
+                "approximate": {
+                  "enum": [
+                    true
+                  ],
+                  "type": "boolean"
+                },
+                "endDate": {
+                  "additionalProperties": false,
+                  "type": "object"
+                },
+                "startDate": {
+                  "additionalProperties": false,
+                  "type": "object"
+                }
+              },
+              "required": [
+                "approximate",
+                "endDate",
+                "startDate"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "approximate": {
+                  "enum": [
+                    true
+                  ],
+                  "type": "boolean"
+                },
+                "duration": {
+                  "type": "string"
+                },
+                "startDate": {
+                  "additionalProperties": false,
+                  "type": "object"
+                }
+              },
+              "required": [
+                "approximate",
+                "duration",
+                "startDate"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "approximate": {
+                  "enum": [
+                    true
+                  ],
+                  "type": "boolean"
+                },
+                "endDate": {
+                  "additionalProperties": false,
+                  "type": "object"
+                },
+                "startDate": {
+                  "additionalProperties": false,
+                  "type": "object"
+                }
+              },
+              "required": [
+                "approximate"
+              ],
+              "type": "object"
+            }
+          ]
+        }
+      ]
+    },
+    "Gender": {
+      "$id": "http://gedcomx.org/v1/Gender",
+      "additionalProperties": false,
+      "properties": {
+        "analysis": {
+          "$ref": "#/definitions/URI"
+        },
+        "attribution": {
+          "$ref": "#/definitions/Attribution"
+        },
+        "confidence": {
+          "$ref": "#/definitions/Confidence"
+        },
+        "id": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/Note"
+          },
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        },
+        "type": {
+          "$ref": "#/definitions/GenderType"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "type": "object"
+    },
+    "GenderType": {
+      "enum": [
+        "http://gedcomx.org/Male",
+        "http://gedcomx.org/Female",
+        "http://gedcomx.org/Unknown",
+        "http://gedcomx.org/Intersex"
+      ],
+      "type": "string"
+    },
+    "Group": {
+      "$id": "http://gedcomx.org/v1/Group",
+      "additionalProperties": false,
+      "properties": {
+        "analysis": {
+          "$ref": "#/definitions/URI"
+        },
+        "attribution": {
+          "$ref": "#/definitions/Attribution"
+        },
+        "confidence": {
+          "$ref": "#/definitions/Confidence"
+        },
+        "date": {
+          "$ref": "#/definitions/Date"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/definitions/EvidenceReference"
+          },
+          "type": "array"
+        },
+        "extracted": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "string"
+        },
+        "identifiers": {
+          "items": {
+            "$ref": "#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "media": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        },
+        "names": {
+          "items": {
+            "$ref": "#/definitions/TextValue"
+          },
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/Note"
+          },
+          "type": "array"
+        },
+        "place": {
+          "$ref": "#/definitions/PlaceReference"
+        },
+        "roles": {
+          "items": {
+            "$ref": "#/definitions/GroupRole"
+          },
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "names"
+      ],
+      "type": "object"
+    },
+    "GroupRole": {
+      "$id": "http://gedcomx.org/v1/GroupRole",
+      "additionalProperties": false,
+      "properties": {
+        "analysis": {
+          "$ref": "#/definitions/URI"
+        },
+        "attribution": {
+          "$ref": "#/definitions/Attribution"
+        },
+        "confidence": {
+          "$ref": "#/definitions/Confidence"
+        },
+        "date": {
+          "$ref": "#/definitions/Date"
+        },
+        "details": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/Note"
+          },
+          "type": "array"
+        },
+        "person": {
+          "$ref": "#/definitions/URI"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        },
+        "type": {
+          "$ref": "#/definitions/RoleType"
+        }
+      },
+      "required": [
+        "person"
+      ],
+      "type": "object"
+    },
+    "Identifier": {
+      "$id": "http://gedcomx.org/v1/Identifier",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/IdentifierType"
+        },
+        "value": {
+          "$ref": "#/definitions/URI"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "type": "object"
+    },
+    "IdentifierType": {
+      "$id": "http://gedcomx.org/types/IdentifierType",
+      "enum": [
+        "http://gedcomx.org/Primary",
+        "http://gedcomx.org/Authority",
+        "http://gedcomx.org/Deprecated"
+      ],
+      "type": "string"
+    },
+    "Name": {
+      "$id": "http://gedcomx.org/v1/Name",
+      "additionalProperties": false,
+      "properties": {
+        "analysis": {
+          "$ref": "#/definitions/URI"
+        },
+        "attribution": {
+          "$ref": "#/definitions/Attribution"
+        },
+        "confidence": {
+          "$ref": "#/definitions/Confidence"
+        },
+        "date": {
+          "$ref": "#/definitions/Date"
+        },
+        "id": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "nameForms": {
+          "items": {
+            "$ref": "#/definitions/NameForm"
+          },
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/Note"
+          },
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        },
+        "type": {
+          "$ref": "#/definitions/NameType"
+        }
+      },
+      "required": [
+        "nameForms"
+      ],
+      "type": "object"
+    },
+    "NameForm": {
+      "$id": "http://gedcomx.org/v1/NameForm",
+      "additionalProperties": false,
+      "properties": {
+        "fullText": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "parts": {
+          "items": {
+            "$ref": "#/definitions/NamePart"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "NamePart": {
+      "$id": "http://gedcomx.org/v1/NamePart",
+      "additionalProperties": false,
+      "properties": {
+        "qualifier": {
+          "$ref": "#/definitions/Qualifier"
+        },
+        "type": {
+          "$ref": "#/definitions/NamePartType"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "type": "object"
+    },
+    "NamePartQualifier": {
+      "enum": [
+        "http://gedcomx.org/Title",
+        "http://gedcomx.org/Primary",
+        "http://gedcomx.org/Secondary",
+        "http://gedcomx.org/Middle",
+        "http://gedcomx.org/Familiar",
+        "http://gedcomx.org/Religious",
+        "http://gedcomx.org/Family",
+        "http://gedcomx.org/Maiden",
+        "http://gedcomx.org/Patronymic",
+        "http://gedcomx.org/Matronymic",
+        "http://gedcomx.org/Geographic",
+        "http://gedcomx.org/Occupational",
+        "http://gedcomx.org/Characteristic",
+        "http://gedcomx.org/Postnom",
+        "http://gedcomx.org/Particle"
+      ],
+      "type": "string"
+    },
+    "NamePartType": {
+      "enum": [
+        "http://gedcomx.org/Prefix",
+        "http://gedcomx.org/Suffix",
+        "http://gedcomx.org/Given",
+        "http://gedcomx.org/Surname"
+      ],
+      "type": "string"
+    },
+    "NameType": {
+      "enum": [
+        "http://gedcomx.org/BirthName",
+        "http://gedcomx.org/MarriedName",
+        "http://gedcomx.org/AlsoKnownAs",
+        "http://gedcomx.org/Nickname",
+        "http://gedcomx.org/AdoptiveName",
+        "http://gedcomx.org/FormalName",
+        "http://gedcomx.org/ReligiousName"
+      ],
+      "type": "string"
+    },
+    "Note": {
+      "$id": "http://gedcomx.org/v1/Note",
+      "additionalProperties": false,
+      "properties": {
+        "attribution": {
+          "$ref": "#/definitions/Attribution"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "type": "object"
+    },
+    "OnlineAccount": {
+      "$id": "http://gedcomx.org/v1/OnlineAccount",
+      "additionalProperties": false,
+      "properties": {
+        "accountName": {
+          "type": "string"
+        },
+        "serviceHomepage": {
+          "$ref": "#/definitions/URI"
+        }
+      },
+      "required": [
+        "serviceHomepage",
+        "accountName"
+      ],
+      "type": "object"
+    },
+    "Person": {
+      "$id": "http://gedcomx.org/v1/Person",
+      "additionalProperties": false,
+      "properties": {
+        "analysis": {
+          "$ref": "#/definitions/URI"
+        },
+        "attribution": {
+          "$ref": "#/definitions/Attribution"
+        },
+        "confidence": {
+          "$ref": "#/definitions/Confidence"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/definitions/EvidenceReference"
+          },
+          "type": "array"
+        },
+        "extracted": {
+          "type": "boolean"
+        },
+        "facts": {
+          "items": {
+            "$ref": "#/definitions/Fact"
+          },
+          "type": "array"
+        },
+        "gender": {
+          "$ref": "#/definitions/Gender"
+        },
+        "id": {
+          "type": "string"
+        },
+        "identifiers": {
+          "items": {
+            "$ref": "#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "media": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        },
+        "names": {
+          "items": {
+            "$ref": "#/definitions/Name"
+          },
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/Note"
+          },
+          "type": "array"
+        },
+        "private": {
+          "type": "boolean"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "PlaceDescription": {
+      "$id": "http://gedcomx.org/v1/PlaceDescription",
+      "additionalProperties": false,
+      "properties": {
+        "analysis": {
+          "$ref": "#/definitions/URI"
+        },
+        "attribution": {
+          "$ref": "#/definitions/Attribution"
+        },
+        "confidence": {
+          "$ref": "#/definitions/Confidence"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/definitions/EvidenceReference"
+          },
+          "type": "array"
+        },
+        "extracted": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "string"
+        },
+        "identifiers": {
+          "items": {
+            "$ref": "#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "jurisdiction": {
+          "$ref": "#/definitions/URI"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "media": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        },
+        "names": {
+          "items": {
+            "$ref": "#/definitions/TextValue"
+          },
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/Note"
+          },
+          "type": "array"
+        },
+        "place": {
+          "$ref": "#/definitions/URI"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        },
+        "spatialDescription": {
+          "$ref": "#/definitions/URI"
+        },
+        "temporalDescription": {
+          "$ref": "#/definitions/Date"
+        },
+        "type": {
+          "$ref": "#/definitions/PlaceType"
+        }
+      },
+      "required": [
+        "names"
+      ],
+      "type": "object"
+    },
+    "PlaceReference": {
+      "$id": "http://gedcomx.org/v1/PlaceReference",
+      "additionalProperties": false,
+      "properties": {
+        "descriptionRef": {
+          "$ref": "#/definitions/URI"
+        },
+        "original": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PlaceType": {
+      "enum": [
+        "https//freedomsloom.org/v1/enumerations/place-type/Address",
+        "https//freedomsloom.org/v1/enumerations/place-type/City",
+        "https//freedomsloom.org/v1/enumerations/place-type/County",
+        "https//freedomsloom.org/v1/enumerations/place-type/Province",
+        "https//freedomsloom.org/v1/enumerations/place-type/State",
+        "https//freedomsloom.org/v1/enumerations/place-type/Country"
+      ],
+      "type": "string"
+    },
+    "Qualifier": {
+      "$id": "http://gedcomx.org/v1/Qualifier",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/SourceReferenceQualifier"
+        },
+        {
+          "$ref": "#/definitions/NamePartQualifier"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "value": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      ]
+    },
+    "Relationship": {
+      "$id": "http://gedcomx.org/v1/Relationship",
+      "additionalProperties": false,
+      "properties": {
+        "analysis": {
+          "$ref": "#/definitions/URI"
+        },
+        "attribution": {
+          "$ref": "#/definitions/Attribution"
+        },
+        "confidence": {
+          "$ref": "#/definitions/Confidence"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/definitions/EvidenceReference"
+          },
+          "type": "array"
+        },
+        "extracted": {
+          "type": "boolean"
+        },
+        "facts": {
+          "items": {
+            "$ref": "#/definitions/Fact"
+          },
+          "type": "array"
+        },
+        "id": {
+          "type": "string"
+        },
+        "identifiers": {
+          "items": {
+            "$ref": "#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "media": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/Note"
+          },
+          "type": "array"
+        },
+        "person1": {
+          "$ref": "#/definitions/URI"
+        },
+        "person2": {
+          "$ref": "#/definitions/URI"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        },
+        "type": {
+          "$ref": "#/definitions/RelationshipType"
+        }
+      },
+      "required": [
+        "person1",
+        "person2"
+      ],
+      "type": "object"
+    },
+    "RelationshipType": {
+      "enum": [
+        "http://gedcomx.org/Couple",
+        "http://gedcomx.org/ParentChild",
+        "http://gedcomx.org/EnslavedBy"
+      ],
+      "type": "string"
+    },
+    "ResourceType": {
+      "enum": [
+        "http://gedcomx.org/Collection",
+        "http://gedcomx.org/PhysicalArtifact",
+        "http://gedcomx.org/DigitalArtifact",
+        "http://gedcomx.org/Record"
+      ],
+      "type": "string"
+    },
+    "RoleType": {
+      "enum": [
+        "http://gedcomx.org/Principal",
+        "http://gedcomx.org/Participant",
+        "http://gedcomx.org/Official",
+        "http://gedcomx.org/Witness"
+      ],
+      "type": "string"
+    },
+    "SourceCitation": {
+      "$id": "http://gedcomx.org/v1/SourceCitation",
+      "additionalProperties": false,
+      "properties": {
+        "lang": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "type": "object"
+    },
+    "SourceDescription": {
+      "$id": "http://gedcomx.org/v1/SourceDescription",
+      "additionalProperties": false,
+      "properties": {
+        "about": {
+          "$ref": "#/definitions/URI"
+        },
+        "analysis": {
+          "$ref": "#/definitions/URI"
+        },
+        "attribution": {
+          "$ref": "#/definitions/Attribution"
+        },
+        "citations": {
+          "items": {
+            "$ref": "#/definitions/SourceCitation"
+          },
+          "type": "array"
+        },
+        "componentOf": {
+          "$ref": "#/definitions/SourceReference"
+        },
+        "coverage": {
+          "items": {
+            "$ref": "#/definitions/Coverage"
+          },
+          "type": "array"
+        },
+        "created": {
+          "additionalProperties": false,
+          "type": "object"
+        },
+        "descriptions": {
+          "items": {
+            "$ref": "#/definitions/TextValue"
+          },
+          "type": "array"
+        },
+        "id": {
+          "type": "string"
+        },
+        "identifiers": {
+          "items": {
+            "$ref": "#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "mediaType": {
+          "type": "string"
+        },
+        "mediator": {
+          "$ref": "#/definitions/URI"
+        },
+        "modified": {
+          "additionalProperties": false,
+          "type": "object"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/Note"
+          },
+          "type": "array"
+        },
+        "publisher": {
+          "$ref": "#/definitions/URI"
+        },
+        "repository": {
+          "$ref": "#/definitions/URI"
+        },
+        "rights": {
+          "items": {
+            "$ref": "#/definitions/URI"
+          },
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        },
+        "titles": {
+          "items": {
+            "$ref": "#/definitions/TextValue"
+          },
+          "type": "array"
+        },
+        "type": {
+          "$ref": "#/definitions/ResourceType"
+        }
+      },
+      "required": [
+        "citations"
+      ],
+      "type": "object"
+    },
+    "SourceReference": {
+      "$id": "http://gedcomx.org/v1/SourceReference",
+      "additionalProperties": false,
+      "properties": {
+        "attribution": {
+          "$ref": "#/definitions/Attribution"
+        },
+        "description": {
+          "$ref": "#/definitions/URI"
+        },
+        "descriptionId": {
+          "type": "string"
+        },
+        "qualifiers": {
+          "items": {
+            "$ref": "#/definitions/Qualifier"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "description"
+      ],
+      "type": "object"
+    },
+    "SourceReferenceQualifier": {
+      "enum": [
+        "http://gedcomx.org/CharacterRegion",
+        "http://gedcomx.org/RectangleRegion",
+        "http://gedcomx.org/TimeRegion"
+      ],
+      "type": "string"
+    },
+    "Subject": {
+      "$id": "http://gedcomx.org/v1/Subject",
+      "additionalProperties": false,
+      "properties": {
+        "analysis": {
+          "$ref": "#/definitions/URI"
+        },
+        "attribution": {
+          "$ref": "#/definitions/Attribution"
+        },
+        "confidence": {
+          "$ref": "#/definitions/Confidence"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/definitions/EvidenceReference"
+          },
+          "type": "array"
+        },
+        "extracted": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "string"
+        },
+        "identifiers": {
+          "items": {
+            "$ref": "#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "media": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/Note"
+          },
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/definitions/SourceReference"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "TextValue": {
+      "$id": "http://gedcomx.org/v1/TextValue",
+      "additionalProperties": false,
+      "properties": {
+        "lang": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "type": "object"
+    },
+    "Timestamp": {
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "URI": {
+      "type": "string"
+    }
+  }
+}

@@ -1,5 +1,5 @@
-import {Timestamp} from "../helpers/Timestamp";
-import {URI} from "../helpers/URI";
+import {Timestamp} from "../aliases/Timestamp";
+import {URI} from "../aliases/URI";
 
 /**
  * @$id "http://gedcomx.org/v1/Attribution"
